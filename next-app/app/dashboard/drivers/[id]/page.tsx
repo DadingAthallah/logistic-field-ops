@@ -5,10 +5,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ArrowLeft, BarChart2, Calendar, CheckCircle, Clock, MapPin, Phone, Star, Truck } from "lucide-react"
 import Link from "next/link"
 
-export default function DriverDetailPage({ params }: { params: { id: string } }) {
+export default async function DriverDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  
   // Mock data for a single driver
   const driver = {
-    id: params.id || "D-101",
+    id: id || "D-101",
     name: "Mike Jenkins",
     alias: "MIKE-01",
     vehicle: "Ford F-150 (Silver)",
@@ -113,7 +115,7 @@ export default function DriverDetailPage({ params }: { params: { id: string } })
                      <Calendar className="size-4 text-primary" />
                      Today's Activity Timeline
                   </CardTitle>
-                  <CardDescription>Chronological log of events for {params.id}</CardDescription>
+                  <CardDescription>Chronological log of events for {id}</CardDescription>
                </CardHeader>
                <CardContent className="p-8">
                   <div className="relative space-y-8 before:absolute before:left-[17px] before:top-2 before:h-[calc(100%-16px)] before:w-[2px] before:bg-border/30">
