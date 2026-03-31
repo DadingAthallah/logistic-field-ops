@@ -1,5 +1,0 @@
-{
-  "buildCommand": "cd fleetflow && npm install && npm run build",
-  "outputDirectory": "fleetflow/dist",
-  "framework": "vite"
-}
